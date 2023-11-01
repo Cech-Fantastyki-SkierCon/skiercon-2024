@@ -52,14 +52,14 @@ export function TimelineComponent(props: Props) {
     }
 
     if (activeDay === 'friday') {
-      options.start = '2023-07-28T16:00:00+02:00'
-      options.end = '2023-07-29T01:00:00+02:00'
+      options.start = '2023-09-15T16:00:00+02:00'
+      options.end = '2023-09-16T01:00:00+02:00'
     } else if (activeDay === 'saturday') {
-      options.start = '2023-07-29T08:00:00+02:00'
-      options.end = '2023-07-30T04:00:00+02:00'
+      options.start = '2023-09-16T09:00:00+02:00'
+      options.end = '2023-09-17T03:00:00+02:00'
     } else if (activeDay === 'sunday') {
-      options.start = '2023-07-30T09:00:00+02:00'
-      options.end = '2023-07-30T16:30:00+02:00'
+      options.start = '2023-09-17T09:00:00+02:00'
+      options.end = '2023-09-17T16:30:00+02:00'
     }
 
     options.min = options.start
@@ -70,24 +70,33 @@ export function TimelineComponent(props: Props) {
 
   return (
     <div>
-      <nav className="fixed top-16 bg-base-200 z-10 p-1 w-full border-t border-zinc-800">
+      <nav
+        className="fixed top-0 z-10 p-1 w-full border-b"
+        style={{ background: '#212b49', borderColor: 'rgb(56, 72, 117)' }}
+      >
         <div className="container flex justify-center">
-          <div className="tabs tabs-boxed">
+          <div className="tabs py-1">
             <a
               onClick={() => setActiveDay('friday')}
-              className={`tab ${activeDay === 'friday' && 'tab-active'}`}
+              className={`tab mx-1 text-lg ${
+                activeDay === 'friday' && 'tab-active'
+              }`}
             >
               Piątek
             </a>
             <a
               onClick={() => setActiveDay('saturday')}
-              className={`tab ${activeDay === 'saturday' && 'tab-active'}`}
+              className={`tab mx-1 text-lg ${
+                activeDay === 'saturday' && 'tab-active'
+              }`}
             >
               Sobota
             </a>
             <a
               onClick={() => setActiveDay('sunday')}
-              className={`tab ${activeDay === 'sunday' && 'tab-active'}`}
+              className={`tab mx-1 text-lg ${
+                activeDay === 'sunday' && 'tab-active'
+              }`}
             >
               Niedziela
             </a>
@@ -103,6 +112,7 @@ export function TimelineComponent(props: Props) {
           id="eventModal"
           className="modal-box relative"
           htmlFor=""
+          style={{ background: '#212b49' }}
         ></label>
       </label>
       {/* eo Modal */}

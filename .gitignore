@@ -1,5 +1,4 @@
 # build output
-dist/
 .output/
 
 # dependencies
@@ -20,3 +19,6 @@ pnpm-debug.log*
 .DS_Store
 
 __gen-api.ts
+
+#dist
+dist
