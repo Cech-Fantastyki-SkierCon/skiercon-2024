@@ -12,9 +12,9 @@
 </script>
 
 {#if formHasErrors}
-  <span class="text-red-500 py-4">
+  <div class="text-red-500 py-4">
     Aby przejść dalej, popraw błędy w formularzu!
-  </span>
+  </div>
 {/if}
 
 <div
