@@ -3,7 +3,7 @@
   import { preakreForm, preakreStep } from '../preakreStore'
 
   let repeatEmail = ''
-  $: formHasErrors = $preakreForm.emailRepeat !== repeatEmail
+  $: formHasErrors = $preakreForm.email !== repeatEmail
 </script>
 
 <form on:submit|preventDefault={() => $preakreStep++}>
