@@ -4,7 +4,7 @@ export interface Props {
   widget: WidgetLinkTiles
 }
 
-const widget = Astro.props.widget
+const widget = Astro.props.widget as WidgetLinkTiles
 
 const size: Record<LinkTileDto['size'], string> = {
   large: 'w-full md:w-1/2 lg:w-1/3',
