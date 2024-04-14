@@ -1,3 +1,13 @@
+---
+import type { CreateMenuItemDto } from 'src/__gen-api'
+
+export interface Props {
+  menuItems: CreateMenuItemDto[]
+}
+
+const menuItems = Astro.props.menuItems as CreateMenuItemDto[]
+---
+
 <div class="fixed w-full bg-base-200 z-20 top-0 left-0">
   <div class="navbar bg-base-200 container">
     <div class="navbar-start">
@@ -20,11 +30,18 @@
           tabindex="0"
           class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
         >
-          <li><a href="/program">Program</a></li>
-          <!-- <li><a href="/goscie">Goście</a></li> -->
-          <!-- <li><a href="/akredytacja">Akredytacja</a></li> -->
-          <li><a href="/kontakt">Kontakt</a></li>
-          <li><a href="https://cech.skiercon.pl/" target="_blank">Cech</a></li>
+          {
+            menuItems.map(menuItem => (
+              <li>
+                <a
+                  href={menuItem.href}
+                  target={menuItem.openInNewTab ? '_blank' : '_self'}
+                >
+                  {menuItem.title}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
       <a
@@ -44,12 +61,18 @@
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
-        <li><a href="/program">Program</a></li>
-        <!-- <li><a href="/goscie">Goście</a></li> -->
-        <!-- <li><a href="/akredytacja">Akredytacja</a></li> -->
-        <!-- <li><a href="/conplace">Jak dojechać?</a></li> -->
-        <li><a href="/kontakt">Kontakt</a></li>
-        <li><a href="https://cech.skiercon.pl/" target="_blank">Cech</a></li>
+        {
+          menuItems.map(menuItem => (
+            <li>
+              <a
+                href={menuItem.href}
+                target={menuItem.openInNewTab ? '_blank' : '_self'}
+              >
+                {menuItem.title}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
     <!-- <div class="navbar-end hidden md:inline-flex">
