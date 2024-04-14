@@ -19,14 +19,16 @@ const guests = data.filter(speaker => speaker.guest)
         return (
           <li class="flex flex-col md:flex-row  md:gap-5 mb-6">
             <div class="w-full md:w-2/12 lg:w-1/12">
-              <img
-                src={guest.image.url}
-                width={guest.image.meta.width}
-                height={guest.image.meta.height}
-                alt={guest.displayName}
-                class="w-full"
-                loading="lazy"
-              />
+              {guest.image && (
+                <img
+                  src={guest.image.url}
+                  width={guest.image.meta.width}
+                  height={guest.image.meta.height}
+                  alt={guest.displayName}
+                  class="w-full"
+                  loading="lazy"
+                />
+              )}
             </div>
             <a href={`/goscie/${guest.slug}`} class="w-full lg:w-7/12">
               <h2 class="text-xl mt-8 md:mt-1 font-bold">
