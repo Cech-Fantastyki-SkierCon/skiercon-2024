@@ -16,7 +16,7 @@ export const preakreForm = writable<any>(
         person: '',
         preakreType: 'normal',
         age: 18,
-        additionalPayment: 121,
+        additionalPayment: 120,
         payMore: false,
       }
 )
@@ -42,7 +42,7 @@ preakreForm.subscribe(form => {
   } else if (form.payMore && form.additionalPayment) {
     amount += form.additionalPayment
   } else {
-    amount += 121
+    amount += 120
   }
   console.log(amount)
   if (form.mug) amount += 60
