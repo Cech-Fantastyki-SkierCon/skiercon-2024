@@ -15,8 +15,7 @@
     <div class="mt-5 mb-3">
       <p class="mb-3">
         Jako <b>Pszczeli Patron</b> otrzymasz <b>specjalny identyfikator</b>
-        oraz kilka drobnych upominków - w&nbsp;tym pamiątkowego
-        <b>SkierCoina</b>.
+        oraz kilka drobnych upominków.
       </p>
       <p>Dodatkowo możesz zamówić nasze SkierConowe gadżety:</p>
     </div>
