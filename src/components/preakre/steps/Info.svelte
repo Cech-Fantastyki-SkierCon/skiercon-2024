@@ -47,7 +47,7 @@
         <input
           id="additional"
           type="number"
-          min="100"
+          min="130"
           max="10000"
           step="10"
           required
