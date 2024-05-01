@@ -17,7 +17,7 @@
       if (data.preakreType === 'normal') {
         data.additionalPayment = undefined
       } else {
-        data.additionalPayment -= 100
+        data.additionalPayment -= 121
       }
 
       if (data.additionalPayment === 0) {
@@ -75,7 +75,7 @@
       if (data.additionalPayment) {
         const mecenats = Math.ceil(data.additionalPayment / 10)
         migrationData.order.push({
-          shopItemId: 7,
+          shopItemId: 9,
           quantity: mecenats,
         })
       }
