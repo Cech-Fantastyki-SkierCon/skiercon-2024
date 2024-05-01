@@ -67,7 +67,7 @@
       <div class="card-body">
         <h2 class="card-title">
           Pszczeli Patron
-          <div class="badge badge-info">100+&nbsp;zł</div>
+          <div class="badge badge-info">121+&nbsp;zł</div>
         </h2>
         <p class="mb-4 lg:mb-0">Wspieram SkierCon! Chcę zostać mecenasem!</p>
         <div class="flex justify-between">

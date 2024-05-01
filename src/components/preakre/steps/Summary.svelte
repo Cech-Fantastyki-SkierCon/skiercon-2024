@@ -123,7 +123,7 @@
           <td>Akredytacja</td>
           <td>
             {$preakreForm.preakreType === 'premium'
-              ? `${$preakreForm.additionalPayment},00 zł`
+              ? `${$preakreForm.payMore ? $preakreForm.additionalPayment : '121,00 zł'}`
               : '69,00 zł'}
           </td>
         </tr>

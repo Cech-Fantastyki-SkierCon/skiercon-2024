@@ -22,7 +22,7 @@
         value={false}
         bind:group={$preakreForm.payMore}
       />
-      <s5an class="label-text text-cyan-500">100,00 zł</s5an>
+      <span class="label-text text-cyan-500">121,00 zł</span>
     </label>
     <label class="label cursor-pointer justify-start">
       <input
@@ -40,7 +40,7 @@
           <span class="text-xl">
             Ile chcesz przeznaczyć? <br />
             <span class="text-sm"
-              >(Co najmniej 100,00 zł, zaokrąglij do 10)</span
+              >(Co najmniej 130,00 zł, zaokrąglij do 10)</span
             >
           </span>
         </label>
@@ -157,9 +157,9 @@
           /></svg
         >
         Jeśli planujesz być Twórcą Programu lub uczestnikiem któregoś z&nbsp;konkursów
-        (JaSkier/OSkier/Narys), zwróć uwagę, żeby podać ten sam adres e-mail co w zgłoszeniu
-        punktu programu lub zgłoszeniu konkursowym. W&nbsp;oparciu o e-mail będziemy
-        mogli zweryfikować Twoją zniżkę.
+        (JaSkier/OSkier/Narys), zwróć uwagę, żeby podać ten sam adres e-mail co w
+        zgłoszeniu punktu programu lub zgłoszeniu konkursowym. W&nbsp;oparciu o e-mail
+        będziemy mogli zweryfikować Twoją zniżkę.
       </p>
     {/if}
   </div>
