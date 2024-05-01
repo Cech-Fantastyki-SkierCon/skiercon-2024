@@ -24,7 +24,12 @@
   class:justify-between={!firstStep}
 >
   {#if !firstStep}
-    <button type="button" class="btn" on:click={back} disabled={loading}>
+    <button
+      type="button"
+      class="btn btn-warning"
+      on:click={back}
+      disabled={loading}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"

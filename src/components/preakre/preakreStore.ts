@@ -1,6 +1,7 @@
 import { writable } from 'svelte/store'
+import { lsGet, lsSet } from './localStorageUtil'
 
-const preakreFormLS = localStorage.getItem('preakreForm')
+const preakreFormLS = lsGet('preakreForm')
 export const preakreForm = writable<any>(
   preakreFormLS
     ? JSON.parse(preakreFormLS)
@@ -23,25 +24,21 @@ export const preakreForm = writable<any>(
 preakreForm.update(form => {
   return {
     ...form,
-    preakreType: 'normal',
   }
 })
 
-const preakreAmountLS = localStorage.getItem('preakreAmount')
+const preakreAmountLS = lsGet('preakreAmount')
 export const preakreAmount = writable(
   preakreAmountLS ? parseInt(preakreAmountLS) : 0
 )
 
-let preakreStepLs = localStorage.getItem('preakreStep')
-if (preakreStepLs === '0') {
-  preakreStepLs = '1'
-}
-export const preakreStep = writable(preakreStepLs ? parseInt(preakreStepLs) : 1)
+let preakreStepLs = lsGet('preakreStep')
+export const preakreStep = writable(preakreStepLs ? parseInt(preakreStepLs) : 0)
 
 preakreForm.subscribe(form => {
   let amount = 0
   if (form.preakreType === 'normal') {
-    amount += 50
+    amount += 69
   } else if (form.payMore) {
     amount += form.additionalPayment || 0
   } else {
@@ -52,14 +49,14 @@ preakreForm.subscribe(form => {
   if (form.tshirt) amount += 40
 
   preakreAmount.update(() => amount)
-  localStorage.setItem('preakreForm', JSON.stringify(form))
+  lsSet('preakreForm', JSON.stringify(form))
 })
 
 preakreAmount.subscribe(state => {
-  localStorage.setItem('preakreAmount', JSON.stringify(state))
+  lsSet('preakreAmount', JSON.stringify(state))
 })
 
 preakreStep.subscribe(step => {
   if (typeof window !== 'undefined') window.scrollTo(0, 0)
-  localStorage.setItem('preakreStep', JSON.stringify(step))
+  lsSet('preakreStep', JSON.stringify(step))
 })

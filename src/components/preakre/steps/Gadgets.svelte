@@ -23,17 +23,15 @@
   {/if}
 
   <div class="form-control mt-4">
-    <p>Przedsprzedaż zakończona</p>
     <label class="label cursor-pointer items-start justify-start">
       <input
         type="checkbox"
         class="checkbox mr-4 mt-1"
         bind:checked={$preakreForm.mug}
-        disabled
       />
       <div>
-        <p class="mb-3 text-lg md:text-xl line-through">
-          SkierQubas - Kubek (<span class="text-gray-400">+60,00&nbsp;zł</span>)
+        <p class="mb-3 text-lg md:text-xl">
+          SkierQubas - Kubek (<span class="text-gray-500">+60,00&nbsp;zł</span>)
         </p>
         <p>
           Legendarny offhand, stworzony w&nbsp;<b
@@ -46,7 +44,7 @@
           <img
             src="/skiercon-kubki.jpg"
             class="object-cover h-56 w-full transition-all duration-200"
-            class:opacity-40={!$preakreForm.mug}
+            class:opacity-60={!$preakreForm.mug}
             alt="Kubki SkierQubas z poprzednich lat"
             width="641"
             height="335"
@@ -62,17 +60,15 @@
   <div class="divider" />
 
   <div class="form-control mt-4">
-    <p>Przedsprzedaż zakończona</p>
     <label class="label cursor-pointer items-start justify-start">
       <input
         type="checkbox"
         class="checkbox mr-4 mt-1"
         bind:checked={wantTshirt}
-        disabled
       />
       <div>
-        <p class="mb-3 text-lg md:text-xl line-through">
-          Koszulka konwentowa (<span class="text-gray-400">+40,00&nbsp;zł</span
+        <p class="mb-3 text-lg md:text-xl">
+          Koszulka konwentowa (<span class="text-gray-500">+40,00&nbsp;zł</span
           >)
         </p>
         <p>
@@ -83,6 +79,18 @@
             target="_blank">Tabela rozmiarów</a
           >
         </p>
+        <div
+          class="rounded-2xl border-4 border-stone-900 overflow-hidden mt-4 mb-1"
+        >
+          <img
+            src="/shop/koluszka24.png-528x533.webp"
+            class="object-cover w-full transition-all duration-200"
+            class:opacity-70={!wantTshirt}
+            alt="Kubki SkierQubas z poprzednich lat"
+            width="641"
+            height="335"
+          />
+        </div>
       </div>
     </label>
   </div>
@@ -96,7 +104,9 @@
         class="select select-bordered"
         id="size"
         bind:value={$preakreForm.tshirt}
+        required
       >
+        <option value="">Wybierz rozmiar</option>
         {#each tshirtSizes as size}
           <option value={size}>{size}</option>
         {/each}
@@ -125,17 +135,15 @@
   <div class="divider" />
 
   <div class="form-control mt-4">
-    <p>Oferta zakończona</p>
     <label class="label cursor-pointer items-start justify-start">
       <input
         type="checkbox"
         class="checkbox mr-4 mt-1"
         bind:checked={$preakreForm.paper}
-        disabled
       />
       <div>
-        <p class="mb-3 text-lg md:text-xl line-through">
-          Papierowy informator konwentowy (<span class="text-gray-400"
+        <p class="mb-3 text-lg md:text-xl">
+          Papierowy informator konwentowy (<span class="text-gray-500"
             >+0,00&nbsp;zł</span
           >)
         </p>

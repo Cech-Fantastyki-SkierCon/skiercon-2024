@@ -22,7 +22,7 @@
         value={false}
         bind:group={$preakreForm.payMore}
       />
-      <span class="label-text text-cyan-400">100,00 zł</span>
+      <s5an class="label-text text-cyan-500">100,00 zł</s5an>
     </label>
     <label class="label cursor-pointer justify-start">
       <input
@@ -38,8 +38,10 @@
       <div class="form-control w-full mb-6">
         <label class="label" for="additional">
           <span class="text-xl">
-            Ile chcesz przeznaczyć? <br />(Co najmniej 100,00 zł, zaokrąglij do
-            10)
+            Ile chcesz przeznaczyć? <br />
+            <span class="text-sm"
+              >(Co najmniej 100,00 zł, zaokrąglij do 10)</span
+            >
           </span>
         </label>
         <input
@@ -50,7 +52,7 @@
           step="10"
           required
           placeholder="np. 150 zł"
-          class="input input-bordered w-full text-cyan-400"
+          class="input input-bordered w-full text-cyan-500"
           bind:value={$preakreForm.additionalPayment}
           maxlength="60"
           autocomplete="given-name"
@@ -255,5 +257,5 @@
       </div>
     </label>
   </div>
-  <Controls firstStep={true} {formHasErrors} />
+  <Controls {formHasErrors} />
 </form>

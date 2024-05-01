@@ -3,6 +3,7 @@
   import Controls from '../Controls.svelte'
   import { preakreForm, preakreAmount } from '../preakreStore'
   import { getRecaptchaToken } from '../recaptcha'
+  import { lsRemove } from '../localStorageUtil'
 
   let loading = false
 
@@ -67,7 +68,7 @@
           shopItemId: 4,
           quantity: 1,
           shopItemVariantId: tshirtsMap.find(
-            tshirt => tshirt.name === data.tshirt
+            tshirt => tshirt.name === data.tshirt,
           ).id,
         })
       }
@@ -86,9 +87,9 @@
       }
 
       const res = await api.transactions.create(migrationData)
-      window.localStorage.removeItem('preakreForm')
-      window.localStorage.removeItem('preakreState')
-      window.localStorage.removeItem('preakreStep')
+      lsRemove('preakreForm')
+      lsRemove('preakreState')
+      lsRemove('preakreStep')
       window.location.href = res.data.redirectUrl
     } catch (err) {
       console.error(err)
@@ -100,21 +101,21 @@
 
 <form on:submit|preventDefault={onSubmit}>
   <p class="text-center mt-6">
-    Wiadomość z <b>kodem QR</b> zostanie wysłana na adres
+    Wiadomość z <b>biletem (kod QR)</b> zostanie wysłana na adres
   </p>
-  <p class="text-cyan-400 text-center my-2 text-lg md:text-2xl mb-6">
+  <p class="text-cyan-500 text-center my-2 text-lg md:text-2xl mb-6">
     {$preakreForm.email}
   </p>
 
   <div class="divider my-8" />
 
   <h2 class="mb-4">Akredytacja i gadżety - podsumowanie</h2>
-  <div class="overflow-x-auto border-2 border-base-300 rounded-1xl">
-    <table class="table table-zebra table-compact w-full">
+  <div class="border-2 border-base-300">
+    <table class="table w-full">
       <thead>
         <tr>
-          <th>Nazwa</th>
-          <th>Cena</th>
+          <th style="border-radius: 0;">Nazwa</th>
+          <th style="border-radius: 0;">Cena</th>
         </tr>
       </thead>
       <tbody>
@@ -123,7 +124,7 @@
           <td>
             {$preakreForm.preakreType === 'premium'
               ? `${$preakreForm.additionalPayment},00 zł`
-              : '50,00 zł'}
+              : '69,00 zł'}
           </td>
         </tr>
         {#if $preakreForm.mug}
@@ -152,14 +153,13 @@
         {/if}
         <tr class="font-bold uppercase">
           <td>Do zapłaty</td>
-          <td class="text-cyan-400 text-2xl">{$preakreAmount},00 zł</td>
+          <td class="text-cyan-500 text-2xl">{$preakreAmount},00 zł</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   {#if $preakreForm.mug || $preakreForm.tshirt || $preakreForm.paper}
-    <div class="divider mb-6" />
     <p class="my-6 alert alert-info shadow-lg">
       <svg
         xmlns="http://www.w3.org/2000/svg"
