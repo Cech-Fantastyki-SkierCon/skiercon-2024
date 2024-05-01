@@ -174,7 +174,7 @@
         /></svg
       >
       Nie wysyłamy zamówionych przedmiotów. Odbiór osobisty wyłącznie na miejscu
-      podczas akredytacji.
+      w sklepiku konwentowym.
     </p>
   {/if}
 

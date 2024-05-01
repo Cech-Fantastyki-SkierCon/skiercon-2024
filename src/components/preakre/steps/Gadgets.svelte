@@ -74,7 +74,7 @@
         <p>
           Wysokiej jakości czarny t-shirt unisex, 100% bawełna, gramatura
           200g/m², nadruk z&nbsp;przodu. <a
-            href="https://share.adler.info/files//label/137---product_size.pdf"
+            href="https://www.adler-sklep.pl/index.php?controller=attachment&id_attachment=130"
             class="link link-info link-blank"
             target="_blank">Tabela rozmiarów</a
           >
