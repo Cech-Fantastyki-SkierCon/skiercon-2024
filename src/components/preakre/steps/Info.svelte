@@ -22,7 +22,7 @@
         value={false}
         bind:group={$preakreForm.payMore}
       />
-      <span class="label-text text-cyan-500">121,00 zł</span>
+      <span class="label-text text-cyan-500">120,00 zł</span>
     </label>
     <label class="label cursor-pointer justify-start">
       <input
