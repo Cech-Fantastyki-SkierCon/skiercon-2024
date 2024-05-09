@@ -41,12 +41,12 @@
           class="rounded-2xl border-4 border-stone-900 overflow-hidden mt-4 mb-1"
         >
           <img
-            src="/skiercon-kubki.jpg"
+            src="/shop/kubki_2024.jpg-520x520.webp"
             class="object-cover h-56 w-full transition-all duration-200"
             class:opacity-60={!$preakreForm.mug}
             alt="Kubki SkierQubas z poprzednich lat"
-            width="641"
-            height="335"
+            width="520"
+            height="520"
           />
         </div>
         <p class="text-sm text-center">
