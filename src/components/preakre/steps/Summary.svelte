@@ -13,16 +13,6 @@
     try {
       $preakreForm.captchaToken = await getRecaptchaToken()
       const data = { ...$preakreForm }
-      delete data.payMore
-      if (data.preakreType === 'normal') {
-        data.additionalPayment = undefined
-      } else {
-        data.additionalPayment -= 121
-      }
-
-      if (data.additionalPayment === 0) {
-        data.additionalPayment = undefined
-      }
 
       // migration
       const tshirtsMap = [
@@ -72,7 +62,13 @@
           ).id,
         })
       }
-      if (data.additionalPayment) {
+      if (data.preakreType === 'normal' || !data.payMore) {
+        data.additionalPayment = 0
+      } else {
+        data.additionalPayment -= 120
+      }
+
+      if (data.additionalPayment > 0) {
         const mecenats = Math.ceil(data.additionalPayment / 10)
         migrationData.order.push({
           shopItemId: 9,
