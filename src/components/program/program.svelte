@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import debounce from 'debounce'
-  import EventItem from './EventItem.svelte'
+  import EventItem from './eventItem.svelte'
   import type { ProgramBlock, ProgramEvent, ProgramType } from 'src/__gen-api'
 
   export let events: ProgramEvent[] = []
