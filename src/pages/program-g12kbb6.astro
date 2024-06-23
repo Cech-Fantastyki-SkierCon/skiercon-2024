@@ -1,0 +1,14 @@
+---
+import Program from '@components/program/program.svelte'
+import Layout from '@layouts/Layout.astro'
+import { api } from 'src/api'
+const [events, blocks, types] = await Promise.all([
+  api.programEvents.allPublic().then(res => res.data),
+  api.programBlocks.getAll().then(res => res.data),
+  api.programTypes.all().then(res => res.data),
+])
+---
+
+<Layout title="Program" description="">
+  <Program events={events} client:only types={types} blocks={blocks} />
+</Layout>
