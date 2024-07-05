@@ -21,3 +21,18 @@ export function getGitRevision() {
 
   return gitRevision
 }
+
+export function plural(
+  count: number,
+  singular: string,
+  plural1: string,
+  plural2: string
+): string {
+  if (count === 1) {
+    return singular
+  } else if (count > 1 && count < 5) {
+    return plural1
+  } else {
+    return plural2
+  }
+}

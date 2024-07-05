@@ -2,69 +2,70 @@
   import type { ProgramEvent } from 'src/__gen-api'
   export let event: ProgramEvent
 
-  const a11y = Object.entries({
-    'Dla dorosłych': event.a11yForAdults,
-    'Dla dzieci': event.a11yForChildren,
-    'Odpowiedni dla autystów': event.a11yForAutistic,
-    'Odpowiedni dla epileptyków': event.a11yForEpileptics,
-    'Odpowiedni dla osób z wadami wzroku': event.a11yForVisualImpairment,
-    'Odpowiedni dla osób z wadami słuchu': event.a11yForHearingImpairment,
-  })
-    .filter(([_, value]) => value)
-    .map(([key]) => key)
-    .join(', ')
+  function getTime(date?: string) {
+    return new Date(date!).toLocaleTimeString('pl', {
+      timeZone: 'Europe/Warsaw',
+      hour: '2-digit',
+      minute: '2-digit',
+    })
+  }
+
+  function getDate(date?: string) {
+    return new Date(date!).toLocaleDateString('pl', {
+      timeZone: 'Europe/Warsaw',
+      weekday: 'long',
+    })
+  }
 </script>
 
-<div class="bg-white shadow-md rounded-lg p-4">
-  <h3 class="text-lg font-semibold mb-3">{event.name}</h3>
-  {#if event.type}
-    <p class="text-sm text-gray-700">
-      <strong>Typ:</strong>
-      {event.type.name}
-    </p>
-  {/if}
-  {#if event.block}
-    <p class="text-sm text-gray-700">
-      <strong>Blok:</strong>
-      {event.block.name}
-    </p>
-  {/if}
-  {#if event.dateStart && event.dateEnd}
-    <p class="text-sm text-gray-700">
-      <strong>Czas:</strong>
-      {new Date(event.dateStart).toLocaleString()} - {new Date(
-        event.dateEnd,
-      ).toLocaleString()}
-    </p>
-  {/if}
-  {#if event.authors && event.authors.length > 0}
-    <p class="text-sm text-gray-700">
-      <strong>Autorzy:</strong>
-      {event.authors
-        .map(
-          author => author.displayName || `${author.name} ${author.lastName}`,
-        )
-        .join(', ')}
-    </p>
-  {/if}
-  {#if event.place}
-    <p class="text-sm text-gray-700">
-      <strong>Miejsce:</strong>
-      {event.place.name}
-    </p>
-  {/if}
-  {#if a11y.length > 0}
-    <p class="text-sm text-gray-700">
-      <strong>Dostępność:</strong>
-      {a11y}
-    </p>
-  {/if}
+<div class="p-6 mb-1 border border-zinc-300 shadow-sm rounded-xl">
+  <div class="md:flex md:justify-between">
+    <div>
+      <p class="text-sm">
+        <span class="material-symbols-outlined info-icon">schedule</span>
+        {getTime(event.dateStart)} - {getTime(event.dateEnd)}, {getDate(
+          event.dateStart,
+        )}
+      </p>
+      <p class="text-sm">
+        <span class="material-symbols-outlined info-icon">location_on</span>
+        {event.place?.name} ({event.place?.programArea.name})
+      </p>
+      {#if event.authors.length > 0}
+        <p class="text-sm">
+          <span class="material-symbols-outlined info-icon">person</span>
+          {event.authors.map(author => author.displayName).join(', ')}
+        </p>
+      {/if}
+    </div>
+    <div>
+      <p class="text-sm">
+        <span class="material-symbols-outlined info-icon">label</span>
+        {event.type?.name}
+      </p>
+      <p class="text-sm">
+        <span class="material-symbols-outlined info-icon">layers</span>
+        {event.block?.name}
+      </p>
+    </div>
+  </div>
+
+  <h2 class="text-xl font-bold my-4">{event.name}</h2>
+  <div class="wysiwyg text-sm my-2">{@html event.description}</div>
+
   {#if event.triggers && event.triggers.length > 0}
-    <p class="text-sm text-gray-700">
-      <strong>Wyzwalacze:</strong>
+    <p class="text-sm mt-4">
+      <span class="material-symbols-outlined info-icon">warning</span>
       {event.triggers.map(trigger => trigger.name).join(', ')}
     </p>
   {/if}
-
-  <p class="text-sm my-3">{@html event.description}</p>
 </div>
+
+<style>
+  .info-icon {
+    font-size: 18px;
+    transform: translateY(3px);
+    display: inline-block;
+    margin-right: 4px;
+  }
+</style>
