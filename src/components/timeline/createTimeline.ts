@@ -82,11 +82,11 @@ export function createTimeline(
     const event = events.find(e => e.id == selectId)
     const startH = moment(event?.dateStart).format('HH:mm')
     const endH = moment(event?.dateEnd).format('HH:mm')
-    let startDate = moment(event?.dateStart).format('DD') + ' września 2023'
+    let startDate = moment(event?.dateStart).format('DD') + ' lipca 2024'
     let time = `${startH} - ${endH}`
     if (event?.durationMinutes! > 60 * 24) {
       time = `Non stop`
-      startDate = '15-17 września 2023'
+      startDate = '26-29 lipca 2024'
     }
 
     const a11y: string[] = []
@@ -116,19 +116,15 @@ export function createTimeline(
       </h3>
       <div class="pb-3">
         <div>${event.place?.name}</div>
-        <div class="text-sm text-gray-400">${
-          event.place?.programArea?.name
-        }</div>
+        <div class="text-sm">${event.place?.programArea?.name}</div>
       </div>
       <div class="pb-3">
         <div> ${time}</div>
-        <div class="text-sm text-gray-400">${startDate}</div>
+        <div class="text-sm">${startDate}</div>
       </div>
       <div class="pb-3">
         <div>${event.type?.name}</div>
-        <div class="text-sm text-gray-400">${
-          event.block ? `${event.block.name}` : ''
-        }</div>
+        <div class="text-sm">${event.block ? `${event.block.name}` : ''}</div>
       </div>
 
         ${
@@ -137,10 +133,7 @@ export function createTimeline(
                  <div class="py-1">
                   <div>Triggery</div>
                   ${event.triggers
-                    ?.map(
-                      t =>
-                        `<div class="text-sm text-gray-400">- ${t.name}</div>`
-                    )
+                    ?.map(t => `<div class="text-sm">- ${t.name}</div>`)
                     .join('')}
                 </div>
               </div>`
@@ -149,19 +142,19 @@ export function createTimeline(
 
       <div class="pb-3">
         <div>Dostępność</div>
-        <div class="text-sm text-gray-400">
+        <div class="text-sm">
           ${a11y.map(a => `<div>- ${a}</div>`).join('')}
         </div>
       </div>
       <div class="pb-2">
         <div>${event.authors.length > 1 ? 'Autorzy' : 'Autor'}</div>
-        <div class="text-sm text-gray-400">
+        <div class="text-sm">
           ${event.authors
             .map(
               a =>
                 `<div class="flex items-center py-1">
                   <div class="flex items-center">
-                  <div class="w-8 h-8 rounded-full mr-2 bg-zinc-900 overflow-hidden">
+                  <div class="w-8 h-8 rounded-full mr-2 overflow-hidden">
                     <img src="${a.image?.url ?? '/icons/person.svg'}"  />
                   </div>
                   </div>
@@ -175,7 +168,7 @@ export function createTimeline(
         event.organization
           ? `<div class="pb-3">
               <div>Organizator</div>
-              <div class="text-sm text-gray-400">
+              <div class="text-sm">
                 ${event.organization.name}
               </div>
             </div>`
@@ -184,13 +177,13 @@ export function createTimeline(
     
       <div class="pt-2">
         <div>Opis wydarzenia</div>
-        <div class="text-sm text-gray-400">
+        <div class="text-sm">
         ${event.description}
         </div>
       </div>
 
       <div class="modal-action">
-        <label onclick="eventModalCheckbox.checked = false" class="btn" style="background: #ffc72c; color: black;">Zamknij</label>
+        <label onclick="eventModalCheckbox.checked = false" class="btn btn-primary">Zamknij</label>
       </div>
       `
 
@@ -204,7 +197,7 @@ export function createTimeline(
 
   window.scrollTo(0, 0)
   setTimeout(() => {
-    timeline.moveTo('2023-09-15T16:00:00+02:00')
+    timeline.moveTo('2024-07-26T16:00:00+02:00')
   }, 0)
 
   return timeline
