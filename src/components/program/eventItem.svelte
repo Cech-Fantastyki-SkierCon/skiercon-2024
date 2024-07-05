@@ -34,7 +34,19 @@
       {#if event.authors.length > 0}
         <p class="text-sm">
           <span class="material-symbols-outlined info-icon">person</span>
-          {event.authors.map(author => author.displayName).join(', ')}
+          {#each event.authors as author, i}
+            {#if author.guest}
+              <a
+                href={`/goscie/${author.slug}`}
+                target="_blank"
+                class="underline hover:no-underline text-blue-600"
+              >
+                {author.displayName}</a
+              >{:else}
+              {author.displayName}
+            {/if}{#if i < event.authors.length - 1},&nbsp;
+            {/if}
+          {/each}
         </p>
       {/if}
     </div>

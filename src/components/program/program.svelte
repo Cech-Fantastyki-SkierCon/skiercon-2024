@@ -143,7 +143,7 @@
         <input
           id="search"
           type="text"
-          placeholder="prelekcja, autor, słowa kluczowe..."
+          placeholder="Nazwa punktu programu, autorzy..."
           class="w-full border border-zinc-300 px-3 py-2 rounded-md shadow-sm transition-all"
           on:input={handleSearchInput}
         />
