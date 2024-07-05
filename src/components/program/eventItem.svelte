@@ -2,19 +2,29 @@
   import type { ProgramEvent } from 'src/__gen-api'
   export let event: ProgramEvent
 
-  function getTime(date?: string) {
-    return new Date(date!).toLocaleTimeString('pl', {
-      timeZone: 'Europe/Warsaw',
+  function showDate(dateStart?: string, dateEnd?: string) {
+    const dateStartObj = new Date(dateStart ?? '')
+    const dateEndObj = new Date(dateEnd ?? '')
+    const dateStartStr = dateStartObj.toLocaleString('pl-PL', {
       hour: '2-digit',
       minute: '2-digit',
     })
-  }
-
-  function getDate(date?: string) {
-    return new Date(date!).toLocaleDateString('pl', {
-      timeZone: 'Europe/Warsaw',
+    const dateEndStr = dateEndObj.toLocaleString('pl-PL', {
+      hour: '2-digit',
+      minute: '2-digit',
+    })
+    const dateStartDay = dateStartObj.toLocaleString('pl-PL', {
       weekday: 'long',
     })
+    const dateEndDay = dateEndObj.toLocaleString('pl-PL', {
+      weekday: 'long',
+    })
+
+    if (dateStartObj.toDateString() === dateEndObj.toDateString()) {
+      return `${dateStartStr} - ${dateEndStr} ${dateStartDay}`
+    } else {
+      return `${dateStartStr} ${dateStartDay} - ${dateEndStr} ${dateEndDay}`
+    }
   }
 </script>
 
@@ -23,9 +33,7 @@
     <div>
       <p class="text-sm">
         <span class="material-symbols-outlined info-icon">schedule</span>
-        {getTime(event.dateStart)} - {getTime(event.dateEnd)}, {getDate(
-          event.dateStart,
-        )}
+        {showDate(event.dateStart, event.dateEnd)}
       </p>
       <p class="text-sm">
         <span class="material-symbols-outlined info-icon">location_on</span>
