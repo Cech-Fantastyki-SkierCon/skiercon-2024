@@ -33,15 +33,14 @@ export function createTimeline(
         ...x.slice(x.length / 2),
       ].join(' ')
     }
-    const areaName = (place.name.match(/\(.*\)/) ?? [''])[0]
     return {
       id: place.id,
       content:
         window.innerWidth < 600
           ? ''
           : `<div style="font-size: 16px;">${placeName}</div>` +
-            (areaName
-              ? ` <div style="font-size: 11px; line-height: 12x;">${areaName}</div>`
+            (place.programBlock
+              ? ` <div style="font-size: 12px; line-height: 13px;">${place.programBlock.name}</div>`
               : ''),
     }
   })
