@@ -24,6 +24,10 @@ export const preakreForm = writable<any>(
 preakreForm.update(form => {
   return {
     ...form,
+    paper: false,
+    mug: false,
+    tshirt: false,
+    preakreType: 'normal',
   }
 })
 

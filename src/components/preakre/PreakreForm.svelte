@@ -76,12 +76,8 @@
             <div class="badge badge-outline">BLIK</div>
           </div>
           <div>
-            <button
-              type="button"
-              class="btn btn-warning"
-              on:click={() => nextStep('premium')}
-            >
-              Kup bilet
+            <button type="button" class="btn disabled" disabled>
+              Niedostępny
             </button>
           </div>
         </div>
@@ -104,9 +100,9 @@
     <InfoSvelte />
   {:else if $preakreStep === 2}
     <SleepSvelte />
+    <!-- {:else if $preakreStep === 3}
+    <GadgetsSvelte /> -->
   {:else if $preakreStep === 3}
-    <GadgetsSvelte />
-  {:else if $preakreStep === 4}
     <SummarySvelte />
   {/if}
 </div>
