@@ -1,27 +1,17 @@
 import { defineConfig } from 'astro/config'
 import node from '@astrojs/node'
-
 import svelte from '@astrojs/svelte'
-
-// https://astro.build/config
 import tailwind from '@astrojs/tailwind'
-
-// https://astro.build/config
 import partytown from '@astrojs/partytown'
-
-// https://astro.build/config
 import compress from 'astro-compress'
-
-// https://astro.build/config
 import robotsTxt from 'astro-robots-txt'
-
-// https://astro.build/config
 import react from '@astrojs/react'
+import fs from 'fs'
+import path from 'path'
 
-// https://astro.build/config
 export default defineConfig({
   site: 'https://skiercon.pl',
-  output: 'server',
+  output: 'static',
   trailingSlash: 'never',
   vite: {
     ssr: {
@@ -49,4 +39,44 @@ export default defineConfig({
     }),
     react(),
   ],
+  hooks: {
+    'astro:build:done': ({ dir }) => {
+      console.log('Build finished, starting URL replacement...')
+      const outputDir = path.join(dir.pathname)
+
+      function updateImageUrls(filePath) {
+        const content = fs.readFileSync(filePath, 'utf8')
+        const updatedContent = content.replaceAll(
+          'https://api.skiercon.pl/static/',
+          '/img/'
+        )
+        console.log('Updating image URLs in:', filePath)
+        fs.writeFileSync(filePath, updatedContent)
+      }
+
+      function processHtmlFiles(directory) {
+        fs.readdir(directory, (err, files) => {
+          if (err) {
+            console.error('Error reading directory:', err)
+            return
+          }
+
+          files.forEach(file => {
+            const filePath = path.join(directory, file)
+
+            if (fs.statSync(filePath).isDirectory()) {
+              processHtmlFiles(filePath)
+            } else if (
+              path.extname(file) === '.html' ||
+              path.extname(file) === '.js'
+            ) {
+              updateImageUrls(filePath)
+            }
+          })
+        })
+      }
+
+      processHtmlFiles(outputDir)
+    },
+  },
 })
